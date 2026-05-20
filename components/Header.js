@@ -27,6 +27,16 @@ export default function Header() {
     }
   }, [mobileMenuOpen])
 
+    useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    
+    if (!storedUser || !isLoggedIn) {
+    window.location.href = "/"
+    }
+  }, []);
+
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user")
     if (storedUser) {
@@ -51,12 +61,15 @@ export default function Header() {
     initialized.current = true
   }, [])
 
+
+
   const handleLogout = () => {
     localStorage.removeItem("user")
     localStorage.removeItem("isLoggedIn")
     setUser(null)
     setMobileMenuOpen(false)
     window.dispatchEvent(new Event("authChanged"))
+    window.location.href = "/"
   }
 
   const toggleMobileMenu = () => {

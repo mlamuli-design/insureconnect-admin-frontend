@@ -36,8 +36,7 @@ export default function UsersPage() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     
     if (!storedUser || !isLoggedIn) {
-      router.push("/");
-      return;
+      window.location.href = "/"
     }
     
     const userData = JSON.parse(storedUser);

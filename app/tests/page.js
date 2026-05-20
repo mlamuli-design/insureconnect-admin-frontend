@@ -29,8 +29,7 @@ export default function CourseTestsPage() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     
     if (!storedUser || !isLoggedIn) {
-      router.push("/");
-      return;
+   window.location.href = "/"
     }
     
     setUser(JSON.parse(storedUser));
